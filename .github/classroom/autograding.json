@@ -1,0 +1,14 @@
+{
+  "tests": [
+    {
+      "name": "ls",
+      "setup": "",
+      "run": "ls",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    }
+  ]
+}
