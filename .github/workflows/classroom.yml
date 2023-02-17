@@ -39,7 +39,10 @@ jobs:
               title: 'README File',
             })
   autograding:
+    needs:
+      - instructions-file
+      - readme-file
     name: Autograding
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - run: echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
