@@ -17,11 +17,19 @@ jobs:
         with:
           files: "instructions.md"
           fail: true
-      - uses: actions/github-script@v6
+      # - uses: actions/github-script@v6
+      #   with:
+      #     script: |
+      #       core.notice('Points 5/10', {
+      #         file: '.github',
+      #         title: 'Autograding complete',
+      #       })
+      #       core.setOutput('Points', '5/10')
+      - uses: LouisBrunner/checks-action@v1.6.0
         with:
-          script: |
-            core.notice('Points 5/10', {
-              file: '.github',
-              title: 'Autograding complete',
-            })
-            core.setOutput('Points', '5/10')
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: Autograding
+          status: completed
+          conclusion: success
+          output: |
+            {"summary": "Points 5/10", "title": "Points 5/10"}
