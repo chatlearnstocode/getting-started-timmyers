@@ -8,8 +8,8 @@ permissions:
   contents: read
 
 jobs:
-  build:
-    name: Autograding
+  instructions-file:
+    name: Check for instructions file
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -17,19 +17,24 @@ jobs:
         with:
           files: "instructions.md"
           fail: true
-      # - uses: actions/github-script@v6
-      #   with:
-      #     script: |
-      #       core.notice('Points 5/10', {
-      #         file: '.github',
-      #         title: 'Autograding complete',
-      #       })
-      #       core.setOutput('Points', '5/10')
-      - uses: LouisBrunner/checks-action@v1.6.0
+      - uses: actions/github-script@v6
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          name: Autograding
-          status: completed
-          conclusion: success
-          output: |
-            {"summary": "Points 5/10", "title": "Points 5/10"}
+          script: |
+            core.notice('Points 10/10', {
+              title: 'Autograding complete',
+            })
+  readme-file:
+    name: Check for readme file
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: andstor/file-existence-action@v2
+        with:
+          files: "README.md"
+          fail: true
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            core.notice('Points 10/10', {
+              title: 'Autograding complete',
+            })
