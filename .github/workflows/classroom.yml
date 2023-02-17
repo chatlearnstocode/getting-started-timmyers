@@ -39,6 +39,7 @@ jobs:
               title: 'README File',
             })
   autograding:
+    if: ${{ always() }}
     needs:
       - instructions-file
       - readme-file
@@ -46,3 +47,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            core.summary
+              .addHeading('Grading Results')
+              .addTable([
+                [{data: 'Test', header: true}, {data: 'Result', header: true}],
+                ['Instructions File', ${{ needs.instructions-file.result == 'success' && 'Pass ✅' || 'Fail ❌' }}],
+                ['README File', ${{ needs.readme-file.result == 'success' && 'Pass ✅' || 'Fail ❌' }}]
+              ])
+              .write()
