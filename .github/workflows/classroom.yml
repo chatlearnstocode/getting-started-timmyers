@@ -20,6 +20,6 @@ jobs:
       - uses: actions/github-script@v6
         with:
           script: |
-            core.notice({
+            core.notice('Points 5/10', {
               title: 'Autograding complete',
-            }, 'Autograding complete 5/10')
+            })
