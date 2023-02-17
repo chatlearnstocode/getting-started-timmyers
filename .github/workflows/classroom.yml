@@ -21,6 +21,7 @@ jobs:
         with:
           script: |
             core.notice('Points 5/10', {
+              file: '.github',
               title: 'Autograding complete',
             })
             core.setOutput('Points', '5/10')
