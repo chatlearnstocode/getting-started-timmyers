@@ -46,7 +46,6 @@ jobs:
     name: Autograding
     runs-on: ubuntu-latest
     steps:
-      - run: echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
       - uses: actions/github-script@v6
         with:
           script: |
