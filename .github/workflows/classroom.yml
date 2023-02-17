@@ -53,7 +53,7 @@ jobs:
               .addHeading('Grading Results')
               .addTable([
                 [{data: 'Test', header: true}, {data: 'Result', header: true}],
-                ['Instructions File', ${{ needs.instructions-file.result == 'success' && \'Pass ✅\' || \'Fail ❌\' }}],
-                ['README File', ${{ needs.readme-file.result == 'success' && \'Pass ✅\' || \'Fail ❌\' }}]
+                ['Instructions File', ${{ needs.instructions-file.result == 'success' && ''Pass ✅'' || ''Fail ❌'' }}],
+                ['README File', ${{ needs.readme-file.result == 'success' && ''Pass ✅'' || ''Fail ❌'' }}]
               ])
               .write()
